@@ -1,10 +1,8 @@
 #!/bin/bash
-# Jacob 28/Abril/2014
+# Credit: Jacob 28/Abril/2014
 
 DATE="`date`"
-
 LOGFILE=$HOME/myscripts/free-mem.sh.log
-
 echo "============================ $DATE ==================================" >> $LOGFILE
 echo "Your Server Free Memory Script" >> $LOGFILE
 echo "Sync.." >> $LOGFILE

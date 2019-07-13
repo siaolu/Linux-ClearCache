@@ -1,11 +1,5 @@
 #!/bin/sh
 
-#sudo sysctl -w vm.drop_caches=3
-#sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
-
-## Usage: clrcache [options: none] ARG1:none
-##
-## Options: None
 ## Reference : https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/
 
 ### StringSubSetups
