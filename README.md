@@ -5,7 +5,7 @@
 --------------------------------------------
 
 Usage: 
-use sudo or root priv  - (i.e): Adust permissions
+use sudo   - to adjust permissions
 ```sh
 $ sudo chmod +x clrcachev1.sh clrcachev2.sh
 ```
@@ -13,7 +13,7 @@ $ sudo chmod +x clrcachev1.sh clrcachev2.sh
 $ sudo ./clrcachev1.sh  
 $ sudo ./clrcachev2.sh
 ```
-(i.e.): Adjust crontab - Update : /etc/crontab
+Adjust crontab - Update : /etc/crontab
 ```sh
 sudo crontab -e
  0,15,30,45 * * * * /home/SomeUser/YourPath/YourTools/clrcachev2.sh
@@ -23,7 +23,7 @@ sudo crontab -e
 ```sh
 Please research before using scripts that modify the function and/or operation of your system.  Please leverage some of the references below to derive more information.
 
-Apply, adjust, change configuration files at your own Risk,  we/myteam/nor the references cited below are responsible for changes you make to your system.  Enjoy!
+Apply, adjust, change configuration files at your own Risk,  we / myteam / nor the references cited below are responsible for changes *you make to your system*.  Enjoy!
 ```
 >Quick Crontab References:
 >[Admin's Choice](https://www.adminschoice.com/crontab-quick-reference)
