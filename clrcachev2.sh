@@ -1,7 +1,5 @@
 #!/bin/sh
 
-## Reference : https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/
-
 ### StringSubSetups
 runlog=/var/log/log.clrcache
 dcach="/proc/sys/vm/drop_caches"
