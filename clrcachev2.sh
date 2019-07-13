@@ -4,7 +4,7 @@
 runlog=/var/log/log.clrcache
 dcach="/proc/sys/vm/drop_caches"
 sycho="sync; echo "
-tdate="`date`"
+tdate=$(date)
 so="sudo"
 vms=" vmstat"
 vmo=" -a -m -w -n "
@@ -26,7 +26,7 @@ function xcache () {            #Clear cache
     $sycho3 > $dcache
 }
 
-function bncSwap() {
+function bncSwap() {            #Clear Swap - Caution see Readme.md
   swapoff -a && swapon -a
 }
 
