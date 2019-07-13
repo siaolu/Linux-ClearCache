@@ -6,13 +6,14 @@
 runlog=/var/log/log.clrcache
 dcach="/proc/sys/vm/drop_caches"
 sycho="sync; echo "
+tdate="`date`"
 so="sudo"
 vms=" vmstat"
 vmo=" -a -m -w -n "
 vmg="| grep cache"
 
 function log_header () {
-    echo "=== $DATE ===" >> $runlog
+    echo "=== $tdate ===" >> $runlog
 }
 
 function log_vmstats () {      #Dump vmstat data to log
@@ -41,7 +42,6 @@ function do_main () {
     bncSwap
     log_vmstats
     log_end
-
 }
 
 do_main
