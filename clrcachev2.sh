@@ -10,23 +10,23 @@ vms=" vmstat"
 vmo=" -a -m -w -n "
 vmg="| grep cache"
 
-function log_header () {
+function log_header {
     echo "=== $tdate ===" >> $runlog
 }
 
-function log_vmstats () {      #Dump vmstat data to log
+function log_vmstats {      #Dump vmstat data to log
     $so $vms $vmo$vmg >> $runlog
     free -g >> $runlog
 }
 
-function xcache () {            #Clear cache
+function xcache {            #Clear cache
     sync
     $sycho1 > $dcache
     $sycho2 > $dcache
     $sycho3 > $dcache
 }
 
-function bncSwap() {            #Clear Swap - Caution see Readme.md
+function bncSwap {            #Clear Swap - Caution see Readme.md
   swapoff -a && swapon -a
 }
 
@@ -34,7 +34,7 @@ function log_end {
   echo "---Cache cleared" >> $runlog
 }
 
-function do_main () {
+function exec_main {
     log_header
     xcache
     bncSwap
@@ -42,4 +42,4 @@ function do_main () {
     log_end
 }
 
-do_main
+exec_main
