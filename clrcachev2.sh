@@ -1,4 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+#title          : clrcachev2.sh
+#description    : clear/flush drop_cache
+#FusedBy        : sia-emff
+#date           : 201913JUL
+#version        : v0.2    
+
+#==============================================================================
 
 ### StringSubSetups
 runlog=/var/log/log.clrcache
@@ -9,15 +17,13 @@ dropcaches="/proc/sys/vm/drop_caches"
 # 2. Clear dentries and inodes.
 # 1. Clear PageCache only.
 FlushLvl="3"
-
 xsn=" sync; "
 xec=" echo "
 tdate=$(date)
 vms=" vmstat"
 vmo=" -a -m -w -n "
-vmg="| grep cache"
 
-### - Use when appending features & debugging 
+### - For use when appending features & debugging 
 #$xec "status: string setups done." 
 
 fx_runstat () {
@@ -28,7 +34,7 @@ log_header () {
     $xec "=== $tdate ===" >> $runlog
 }
 
-log_vmstats () {      #Dump vmstat d ata to log
+log_vmstats () {            #Dump vmstat d ata to log
     $vms $vmo >> $runlog
     free -g >> $runlog
     #fx_runstat "log_vmstats"
