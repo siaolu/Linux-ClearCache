@@ -2,44 +2,59 @@
 
 ### StringSubSetups
 runlog=/var/log/log.clrcache
-dcach="/proc/sys/vm/drop_caches"
-sycho="sync; echo "
+
+dropcaches="/proc/sys/vm/drop_caches"
+# Adjust per your requirements
+# 3. Clear PageCache, dentries and inodes
+# 2. Clear dentries and inodes.
+# 1. Clear PageCache only.
+FlushLvl="3"
+
+xsn=" sync; "
+xec=" echo "
 tdate=$(date)
-so="sudo"
 vms=" vmstat"
 vmo=" -a -m -w -n "
 vmg="| grep cache"
 
-function log_header {
-    echo "=== $tdate ===" >> $runlog
+### - Use when appending features & debugging 
+#$xec "status: string setups done." 
+
+fx_runstat () {
+    $xec "status: ${1} done."
 }
 
-function log_vmstats {      #Dump vmstat data to log
-    $so $vms $vmo$vmg >> $runlog
+log_header () {
+    $xec "=== $tdate ===" >> $runlog
+}
+
+log_vmstats () {      #Dump vmstat d ata to log
+    $vms $vmo >> $runlog
     free -g >> $runlog
+    #fx_runstat "log_vmstats"
 }
 
-function xcache {            #Clear cache
-    sync
-    $sycho1 > $dcache
-    $sycho2 > $dcache
-    $sycho3 > $dcache
+fxclearCache () {            #Clear cache
+    $scn$xec$FlushLvl > $dropcaches
+    #fx_runstat "fxclearCache"
 }
 
-function bncSwap {            #Clear Swap - Caution see Readme.md
+fxbounceSwap () {            #Clear Swap - Caution see Readme.md
   swapoff -a && swapon -a
+  #fx_runstat "fxbounceSwap"
 }
 
-function log_end {
+log_end () {
   echo "---Cache cleared" >> $runlog
 }
 
-function exec_main {
+exec_main () {
     log_header
-    xcache
-    bncSwap
+    fxclearCache
+    fxbounceSwap
     log_vmstats
     log_end
+    #fx_runstat "exec_main"
 }
 
 exec_main
