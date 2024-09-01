@@ -1,0 +1,43 @@
+Revision Log: 
+
+Error Handling:
+
+Added set -eo pipefail to exit on errors and unhandled failures in pipes.
+Implemented a handle_error function to log errors and exit gracefully.
+Added error trapping to catch and handle errors in functions.
+
+
+Configurability:
+
+Made key variables configurable through environment variables (RUNLOG, DROPCACHES, FLUSH_LEVEL, VERBOSE).
+Added a VERBOSE option to control console output.
+
+
+Logging Verbosity:
+
+Implemented log levels (INFO, ERROR).
+Console output is now optional and controlled by the VERBOSE flag.
+
+
+Portability:
+
+Removed vmstat command as it's not available on all Unix-like systems.
+Used more portable alternatives where possible.
+
+
+Performance:
+
+Reduced the number of write operations to the log file.
+
+
+Modularity:
+
+Refactored the code into smaller, more focused functions.
+Improved the main function to be more concise and easier to understand.
+
+
+Additional Improvements:
+
+Added comments to explain the purpose of each section.
+Improved variable naming for clarity.
+Ensured consistent error handling across all critical operations.
